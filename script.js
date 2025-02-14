@@ -1,14 +1,14 @@
 let isOpen = false;
 
 function createConfetti() {
-  // Extended color palette for confetti
+  // Extended pastel palette for confetti
   const colors = [
-    "#B39DDB", // purple
-    "#81D4FA", // blue
-    "#FFCC80", // orange
-    "#FFF59D", // yellow
-    "#FFCDD2", // red
-    "#C8E6C9", // green
+    "#B39DDB",
+    "#81D4FA",
+    "#FFCC80",
+    "#FFF59D",
+    "#FFCDD2",
+    "#C8E6C9",
   ];
   for (let i = 0; i < 100; i++) {
     const confettiElem = document.createElement("div");
@@ -37,13 +37,28 @@ function toggleEnvelope(container) {
       spread: 100,
       origin: { y: 0.6 },
       colors: [
-        "#B39DDB", // purple
-        "#81D4FA", // blue
-        "#FFCC80", // orange
-        "#FFF59D", // yellow
-        "#FFCDD2", // red
-        "#C8E6C9", // green
+        "#B39DDB",
+        "#81D4FA",
+        "#FFCC80",
+        "#FFF59D",
+        "#FFCDD2",
+        "#C8E6C9",
       ],
     });
   }
 }
+
+// Pink fine trail functionality for the mouse
+document.addEventListener("mousemove", function (e) {
+  const trail = document.createElement("div");
+  trail.className = "mouse-trail";
+  // Random rotation for a subtle distortion effect
+  const randomRotation = Math.random() * 60 - 30; // entre -30° et 30°
+  trail.style.setProperty("--r", randomRotation + "deg");
+  trail.style.left = e.clientX + "px";
+  trail.style.top = e.clientY + "px";
+  document.body.appendChild(trail);
+  trail.addEventListener("animationend", () => {
+    trail.remove();
+  });
+});
